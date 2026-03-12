@@ -16,11 +16,13 @@ body {
         margin: 70px auto;
         padding: 20px;
         border: 1px solid #ccc;
-        border-radius: 4px;
-        background-color: #ffffff;
+        border-radius: 8px;
+        background-color: #504f4fb0;
+        /* background-color: #ffffff; */
 
         h1 {
             text-align: center;
+            color: #f6f6f6;
         }
     }
 
