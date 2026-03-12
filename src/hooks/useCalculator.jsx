@@ -10,7 +10,8 @@ function useCalculator() {
 
     const compute = () => {
         try {
-            const result = eval(value);
+            const expression = value.replace(/mod/g, "%");
+            const result = eval(expression);
             setHistory((prev) => [...prev, `${value} = ${result}`]);
             setValue(String(result));
         } catch {
