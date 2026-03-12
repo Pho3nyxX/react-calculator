@@ -1,13 +1,14 @@
 import { useState } from "react";
+import { calculate } from "../utils/calculate";
 
-function useCalculator(){
+function useCalculator() {
     const [value, setValue] = useState("");
 
-    const appendNumber = (num) => {
-        setValue((prev) => prev + num);
-    }
+    const append = (char) => {
+        setValue((prev) => prev + char);
+    };
 
-    return{value, appendNumber};
+    return { value, append };
 }
 
 export default useCalculator;

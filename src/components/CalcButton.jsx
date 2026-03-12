@@ -1,6 +1,9 @@
-function CalcButton({ label }){
+function CalcButton({ label, onClick }) {
     return (
-        <button className="calcBtn">
+        <button
+            className="calcBtn"
+            onClick={() => onClick(label)}
+        >
             {label}
         </button>
     )
