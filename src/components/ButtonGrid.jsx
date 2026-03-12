@@ -1,7 +1,8 @@
 import CalcButton from "./CalcButton";
 
-function ButtonGrid({ append, compute }) {
+function ButtonGrid({ append, compute, clear }) {
   const buttons = [
+    "C", "(", ")", "%",
     "7", "8", "9", "/",
     "4", "5", "6", "*",
     "1", "2", "3", "-",
@@ -11,6 +12,8 @@ function ButtonGrid({ append, compute }) {
   const handleClick = (btn) => {
     if (btn === "=") {
       compute();
+    } else if (btn === "C") {
+      clear();
     } else {
       append(btn);
     }
