@@ -8,7 +8,16 @@ function useCalculator() {
         setValue((prev) => prev + char);
     };
 
-    return { value, append };
+    const compute = () => {
+        try {
+            const result = eval(value);
+            setValue(String(result));
+        } catch {
+            setValue("Error");
+        }
+    };
+
+    return { value, append, compute };
 }
 
 export default useCalculator;
