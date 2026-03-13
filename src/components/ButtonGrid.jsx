@@ -22,7 +22,12 @@ function ButtonGrid({ append, compute, clear }) {
   return (
     <div className="button-grid">
       {buttons.map((btn, index) => (
-        <CalcButton key={index} label={btn} onClick={handleClick} />
+        <CalcButton
+          key={index}
+          label={btn}
+          onClick={handleClick}
+          className={btn === "=" ? "equals" : ""}
+        />
       ))}
     </div>
   );

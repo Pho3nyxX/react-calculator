@@ -1,7 +1,7 @@
-function CalcButton({ label, onClick }) {
+function CalcButton({ label, onClick, className }) {
     return (
         <button
-            className="calcBtn"
+            className={`calcBtn ${className}`}
             onClick={() => onClick(label)}
         >
             {label}
