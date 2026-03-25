@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { evaluate } from "../utils/evaluate";
 
 function useCalculator() {
     const [value, setValue] = useState("");
@@ -11,7 +12,7 @@ function useCalculator() {
     const compute = () => {
         try {
             const expression = value.replace(/mod/g, "%");
-            const result = eval(expression);
+            const result = evaluate(expression);
             setHistory((prev) => [...prev, `${value} = ${result}`]);
             setValue(String(result));
         } catch {

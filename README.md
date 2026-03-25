@@ -2,7 +2,7 @@
 
 A basic calculator built with React.  
 
-<img src="./src/assets/calculator.png" alt="React Calculator" width="400" height="400" />
+<img src="./src/assets/calculator.png" alt="React Calculator" width="auto" height="auto" />
 
 ---
 
