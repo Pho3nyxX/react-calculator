@@ -43,6 +43,7 @@ function useCalculator() {
         }
 
         if (isOperator(lastChar) && isOperator(nextChar)) {
+            if (nextChar === "-") return true;
             return false;
         }
 
@@ -50,10 +51,12 @@ function useCalculator() {
             return false;
         }
 
+        if (!current) {
+            return /[0-9]/.test(nextChar) || nextChar === "-";
+        }
+
         return true;
     };
-
     return { value, append, compute, history, clear };
 }
-
 export default useCalculator;

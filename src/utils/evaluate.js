@@ -1,5 +1,32 @@
 function tokenize(expr) {
-    return expr.match(/(\d+(\.\d+)?|[+\-*/()%])/g);
+    const tokens = [];
+    let number = "";
+
+    for (let i = 0; i < expr.length; i++) {
+        const char = expr[i];
+        const prev = expr[i - 1];
+
+        if (/\d|\./.test(char)) {
+            number += char;
+        } else {
+            if (number) {
+                tokens.push(number);
+                number = "";
+            }
+
+            if (
+                char === "-" &&
+                (i === 0 || "+-*/%(".includes(prev))
+            ) {
+                number = "-"; 
+            } else {
+                tokens.push(char);
+            }
+        }
+    }
+    if (number) tokens.push(number);
+
+    return tokens;
 }
 
 const precedence = {
