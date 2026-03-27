@@ -2,11 +2,12 @@ import CalcButton from "./CalcButton";
 
 function ButtonGrid({ append, compute, clear }) {
   const buttons = [
-    "C", "(", ")", "mod",
-    "7", "8", "9", "/",
-    "4", "5", "6", "*",
-    "1", "2", "3", "-",
-    "0", ".", "+", "="
+    "C", "(", ")", "mod", 
+    "7", "8", "9", "÷", 
+    "4", "5", "6", "*", 
+    "1", "2", "3", "-", 
+    "0", "π", "√", "x²", 
+    "%", ".", "+", "="
   ];
 
   const handleClick = (btn) => {

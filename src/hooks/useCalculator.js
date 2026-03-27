@@ -8,17 +8,27 @@ function useCalculator() {
 
     const append = (char) => {
         setValue((prev) => {
+            if (char === "π") return prev + Math.PI;
+
+            if (char === "√") return prev + "√(";
+
+            if (char === "x²") return prev + "²";
+
+            if (char === "%") return prev + "%";
+
             if (isValidAppend(prev, char)) {
                 return prev + char;
-            } else {
-                return prev;
             }
+
+            return prev;
         });
     };
 
     const compute = () => {
         try {
-            const expression = value.replace(/mod/g, "%");
+            const expression = value
+                .replace(/mod/g, "%")
+                .replace(/÷/g, "/")
             const result = evaluate(expression);
             setHistory((prev) => [...prev, `${value} = ${result}`]);
             setValue(String(result));
