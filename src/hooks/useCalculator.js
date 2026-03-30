@@ -41,6 +41,10 @@ function useCalculator() {
         setValue("");
     };
 
+    const backspace = () => {
+        setValue((prev) => prev.slice(0, -1));
+    };
+
     const isValidAppend = (current, nextChar) => {
         const lastChar = current[current.length - 1];
 
@@ -67,6 +71,6 @@ function useCalculator() {
 
         return true;
     };
-    return { value, append, compute, history, clear };
+    return { value, append, compute, history, clear, backspace };
 }
 export default useCalculator;
