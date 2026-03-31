@@ -16,9 +16,10 @@ function useCalculator() {
 
             if (char === "%") return prev + "%";
 
-            if (isValidAppend(prev, char)) {
-                return prev + char;
-            }
+            if (["sin", "cos", "tan", "log", "ln"].includes(char))
+                return prev + char + "(";
+
+            if (isValidAppend(prev, char)) return prev + char;
 
             return prev;
         });

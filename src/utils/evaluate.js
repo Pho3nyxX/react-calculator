@@ -1,18 +1,24 @@
 function tokenize(expr) {
     const tokens = [];
     let number = "";
+    const functions = ["sqrt", "sin", "cos", "tan", "log", "ln"];
 
     for (let i = 0; i < expr.length; i++) {
         const char = expr[i];
         const prev = expr[i - 1];
 
-        if (expr.slice(i, i + 4) === "sqrt") {
+        const matchedFn = functions.find(fn =>
+            expr.slice(i, i + fn.length) === fn
+        );
+
+        if (matchedFn) {
             if (number) {
                 tokens.push(number);
                 number = "";
             }
-            tokens.push("sqrt");
-            i += 3;
+
+            tokens.push(matchedFn);
+            i += matchedFn.length - 1;
             continue;
         }
 
@@ -84,6 +90,7 @@ function toPostfix(tokens) {
 
 function evaluatePostfix(postfix) {
     const stack = [];
+    const toRadians = (deg) => deg * (Math.PI / 180);
 
     postfix.forEach((token) => {
         if (!isNaN(token)) {
@@ -96,7 +103,27 @@ function evaluatePostfix(postfix) {
         } else if (token === "%") {
             const n = stack.pop();
             stack.push(n / 100);
-            
+
+        } else if (token === "sin") {
+            const n = stack.pop();
+            stack.push(Math.sin(toRadians(n)));
+
+        } else if (token === "cos") {
+            const n = stack.pop();
+            stack.push(Math.cos(toRadians(n)));
+
+        } else if (token === "tan") {
+            const n = stack.pop();
+            stack.push(Math.tan(toRadians(n)));
+
+        } else if (token === "log") {
+            const n = stack.pop();
+            stack.push(Math.log10(n));
+
+        } else if (token === "ln") {
+            const n = stack.pop();
+            stack.push(Math.log(n));
+
         } else {
             const b = stack.pop();
             const a = stack.pop();
@@ -121,7 +148,12 @@ export function evaluate(expression) {
             .replace(/÷/g, "/")
             .replace(/π/g, `${Math.PI}`)
             .replace(/(\d+)²/g, "($1*$1)")
-            .replace(/√/g, "sqrt");
+            .replace(/√/g, "sqrt")
+            .replace(/sin/g, "sin")
+            .replace(/cos/g, "cos")
+            .replace(/tan/g, "tan")
+            .replace(/log/g, "log")
+            .replace(/ln/g, "ln")
 
         const tokens = tokenize(expr);
         const postfix = toPostfix(tokens);
