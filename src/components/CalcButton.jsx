@@ -6,6 +6,7 @@ function CalcButton({ label, onClick, className }) {
         >
             {label}
         </button>
-    )
+    );
 }
+
 export default CalcButton;

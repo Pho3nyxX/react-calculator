@@ -26,8 +26,8 @@ function ButtonGrid({ append, compute, clear }) {
         <CalcButton
           key={index}
           label={btn}
-          onClick={handleClick}
           className={btn === "=" ? "equals" : ""}
+          onClick={handleClick}
         />
       ))}
     </div>
