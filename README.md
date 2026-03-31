@@ -14,7 +14,18 @@ A basic calculator built with React.
   - Multiplication (*)
   - Division (/)
 - Modulus operation using **mod**.
-- Clear button to reset the display.
+- Percentage (%) calculation.
+- Pi (π) input.
+- Square (x²) calculation.
+- Square root (√) calculation.
+- Scientific functions:
+  - sin (degrees)
+  - cos (degrees)
+  - tan (degrees)
+  - log (base 10)
+  - ln (natural logarithm)
+- Clear (C) button to reset the display.
+- Backspace support to remove the last character.
 - Calculation history tracking.
 
 --- 
